@@ -9,6 +9,14 @@
 
 	<name>Auto-generated JMH benchmark</name>
 
+    <properties>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <johnzon.version>0.9.4-incubating-SNAPSHOT</johnzon.version>
+    </properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.openjdk.jmh</groupId>
@@ -28,8 +36,19 @@
 		<dependency>
 			<groupId>io.fastjson</groupId>
 			<artifactId>boon</artifactId>
-			<version>0.34-SNAPSHOT</version>
+			<version>0.33</version>
 		</dependency>
+
+        <dependency>
+            <groupId>org.apache.johnzon</groupId>
+            <artifactId>johnzon-core</artifactId>
+            <version>${johnzon.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-json_1.0_spec</artifactId>
+            <version>1.0-alpha-1</version>
+        </dependency>
 
         <dependency>
             <groupId>com.esotericsoftware.kryo</groupId>
@@ -63,12 +82,6 @@
 			<version>2.4</version>
 		</dependency>
 	</dependencies>
-
-	<properties>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
 
 	<build>
 		<plugins>
