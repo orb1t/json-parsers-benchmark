@@ -20,6 +20,8 @@ package io.gatling.jsonbenchmark.string;
 
 import java.io.StringReader;
 import java.util.concurrent.TimeUnit;
+
+import javax.json.JsonReader;
 import javax.json.spi.JsonProvider;
 import org.apache.johnzon.core.JsonProviderImpl;
 import org.openjdk.jmh.annotations.GenerateMicroBenchmark;
@@ -41,7 +43,13 @@ public class MainJohnzonBenchmark {
     private JsonProvider jsonProvider = new JsonProviderImpl();
 
     private Object parse(String str) throws Exception {
-        return jsonProvider.createParser(new StringReader(str));
+        JsonReader reader = jsonProvider.createReader(new StringReader(str));
+        try {
+            return reader.read();
+        }
+        finally {
+            reader.close();
+        }
     }
 
     @GenerateMicroBenchmark
